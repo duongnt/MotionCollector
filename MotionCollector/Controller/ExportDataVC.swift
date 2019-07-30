@@ -128,8 +128,6 @@ class ExportDataVC: UIViewController, UITableViewDelegate, UITableViewDataSource
                 tableView.insertRows(at: [indexPath], with: .fade)
             }
             break
-            
-            
         }
         
     }
@@ -187,7 +185,7 @@ class ExportDataVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete {
             context.delete(controller.fetchedObjects![indexPath.row])
@@ -305,7 +303,7 @@ class ExportDataVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         if let fileURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName) as URL? {
             let objectsToShare = [fileURL]
             let activityController = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-            let excludedActivities = [UIActivityType.postToFlickr, UIActivityType.postToWeibo, UIActivityType.message, UIActivityType.mail, UIActivityType.print, UIActivityType.copyToPasteboard, UIActivityType.assignToContact, UIActivityType.saveToCameraRoll, UIActivityType.addToReadingList, UIActivityType.postToFlickr, UIActivityType.postToVimeo, UIActivityType.postToTencentWeibo]
+            let excludedActivities = [UIActivity.ActivityType.postToFlickr, UIActivity.ActivityType.postToWeibo, UIActivity.ActivityType.message, UIActivity.ActivityType.mail, UIActivity.ActivityType.print, UIActivity.ActivityType.copyToPasteboard, UIActivity.ActivityType.assignToContact, UIActivity.ActivityType.saveToCameraRoll, UIActivity.ActivityType.addToReadingList, UIActivity.ActivityType.postToFlickr, UIActivity.ActivityType.postToVimeo, UIActivity.ActivityType.postToTencentWeibo]
             
             activityController.excludedActivityTypes = excludedActivities
             present(activityController, animated: true, completion: nil)
